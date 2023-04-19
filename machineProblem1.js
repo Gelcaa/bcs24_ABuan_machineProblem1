@@ -12,7 +12,7 @@
 var prompt = require('prompt-sync')();
 
 // function To compute class participation. It will accept 5 Enabling assessment and compute the average
-function ClassParticipation() {
+function classParticipationGrade() {
     enablingAssessments = []
 
     //2. The program should use a for loop to read the grades of each student using the input 
@@ -67,7 +67,7 @@ function SummativeGrade() {
 
 
 // function for exam grade
-function ExamGrade() {
+function examGrade() {
    
         let examGrades = prompt('Enter exam grade: ')
 
@@ -82,7 +82,7 @@ function ExamGrade() {
 
     
      
-function ComputeGrade(classParticipation,summativeGrade,examGrade){
+function computeGrade(classParticipation,summativeGrade,examGrade){
     let grade = (classParticipation * .30) + (summativeGrade * .30) + (examGrade * .40);
 
     return Math.round(grade);
@@ -122,15 +122,15 @@ var tableOfResults = new Table({
 for (let i = 0; i < 5; i++) { 
 
     let studentName = prompt("Enter the name of the student: ");
-    let classParticipation = ClassParticipation();
-    let summativeGrade = SummativeGrade();
-    let examGrade = ExamGrade();
-    let grade = ComputeGrade(classParticipation,  summativeGrade, examGrade);
-    let letterGrade = calculateLetterGrade(examGrade);
+    let classParticipation = classParticipationGrade();
+    let summative = SummativeGrade();
+    let exam = examGrade();
+    let grade = computeGrade(classParticipation,summative,exam);
+    let letterGrade = calculateLetterGrade(grade);
    
     
 
-    tableOfResults.push([studentName,classParticipation,summativeGrade, examGrade, grade, letterGrade])
+    tableOfResults.push([studentName,classParticipation,summative, exam, grade, letterGrade])
 
 
 }
